@@ -69,9 +69,9 @@
        Write a function for changing the title of the document in something else.
       */
 
-      const changeTitle = function newTitle() {
+      const changeTitle = function (newTitle) {
         const changeHeader = document.querySelector('h1')
-        changeHeader.innerHTML = 'This is the new title'
+        changeHeader.innerHTML = newTitle
       }
 
       /* EXERCISE 2
@@ -91,7 +91,7 @@
         let parentDiv = document.querySelectorAll('div p')
 
         for (let i = 0; i < parentDiv.length; i++) {
-          parentDiv[i].style.color = 'blue'
+          parentDiv[i].innerText = 'This paragraph has been changed'
         }
       }
 
@@ -100,8 +100,10 @@
       */
 
       const changeUrls = function () {
-        let links = document.querySelector('a')
-        links.href = 'http://www.google.com'
+        let links = document.querySelectorAll('a')
+        for (let i = 0; i < links.length; i++) {
+          links[i].href = 'http://www.google.com'
+        }
       }
 
       /* EXERCISE 5
@@ -111,7 +113,7 @@
       const addToTheSecond = function (content) {
         //Create the new list item, the content then attach them to each other
         let newListItem = document.createElement('li')
-        let listContent = document.createTextNode('Hello world')
+        let listContent = document.createTextNode(content)
         newListItem.appendChild(listContent)
         //Find the parent element where the li should go and attach them
         let element = document.getElementById('secondList')
@@ -124,9 +126,7 @@
 
       const addParagraph = function (content) {
         let newParagraph = document.createElement('p')
-        let paragraphContent = document.createTextNode(
-          'This is the new paragraph being created',
-        )
+        let paragraphContent = document.createTextNode(content)
         newParagraph.appendChild(paragraphContent)
         let element = document.querySelector('div')
         element.appendChild(newParagraph)
